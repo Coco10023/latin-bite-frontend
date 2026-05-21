@@ -4,4 +4,9 @@ import { MenuService } from '../services/menu.services';
 @Injectable({
   providedIn: 'root',
 })
-export class Menu {}
+export class Menu {
+  menuItems: any[] = [];
+  constructor(private menuService: MenuService) {}
+}
+
+
