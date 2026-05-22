@@ -1,1 +1,7 @@
-<p>menu works!</p>
+<h2>Meny</h2>
+
+<div *ngFor="let item of menuItems">
+  <h3>{{ item.title }}</h3>
+  <p>{{ item.description }}</p>
+  <p>{{ item.price }} kr</p>
+</div>
