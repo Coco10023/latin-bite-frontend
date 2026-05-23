@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class MenuService {
 
   private apiUrl = 'http://localhost:3000/api/menu';
@@ -16,14 +17,26 @@ export class MenuService {
     return this.http.get(this.apiUrl);
   }
 
-  // Skapar ny maträtt
+  // Lägger till ny maträtt
   addMenuItem(menuItem: any) {
 
-    // Hämtar JWT-token från sessionStorage
     const token = sessionStorage.getItem('token');
 
-    // Skickar POST-request till backend
     return this.http.post(this.apiUrl, menuItem, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  // Tar bort maträtt
+  deleteMenuItem(id: string) {
+
+    // Hämtar JWT-token
+    const token = sessionStorage.getItem('token');
+
+    // Skickar DELETE-request till backend
+    return this.http.delete(`${this.apiUrl}/${id}`, {
 
       // Skickar med token i headers
       headers: {
