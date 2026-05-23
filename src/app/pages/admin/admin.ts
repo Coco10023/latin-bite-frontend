@@ -76,4 +76,13 @@ export class Admin implements OnInit {
       this.price = 0;
     });
   }
+
+    deleteMenuItem(id: string) {
+
+    this.menuService.deleteMenuItem(id).subscribe(() => {
+
+      // Uppdaterar menyn efter delete
+      this.getMenuItems();
+    });
+  }
 }
