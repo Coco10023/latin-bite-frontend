@@ -1,1 +1,45 @@
-<p>admin works!</p>
+<h2>Adminpanel</h2>
+
+<section>
+  <h3>Lägg till ny maträtt</h3>
+
+  <form (ngSubmit)="addMenuItem()">
+    <label for="title">Namn på maträtt</label>
+    <input
+      id="title"
+      name="title"
+      type="text"
+      [(ngModel)]="title"
+      required
+    >
+
+    <label for="description">Beskrivning</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="description"
+      required
+    ></textarea>
+
+    <label for="price">Pris</label>
+    <input
+      id="price"
+      name="price"
+      type="number"
+      [(ngModel)]="price"
+      required
+    >
+
+    <button type="submit">Lägg till maträtt</button>
+  </form>
+</section>
+
+<section>
+  <h3>Nuvarande meny</h3>
+
+  <div *ngFor="let item of menuItems">
+    <h4>{{ item.title }}</h4>
+    <p>{{ item.description }}</p>
+    <p>{{ item.price }} kr</p>
+  </div>
+</section>
