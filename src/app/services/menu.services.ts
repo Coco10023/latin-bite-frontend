@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MenuService {
 
-  private apiUrl = 'http://localhost:3000/api/menu';
+  private apiUrl = 'https://latin-bite-api.onrender.com/';
 
   constructor(private http: HttpClient) {}
 

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Auth {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = 'https://latin-bite-api.onrender.com/';
 
   constructor(private http: HttpClient) {}
 
