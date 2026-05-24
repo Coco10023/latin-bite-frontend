@@ -1,0 +1,13 @@
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+input,
+textarea {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
