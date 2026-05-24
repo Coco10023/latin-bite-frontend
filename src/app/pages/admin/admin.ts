@@ -33,6 +33,8 @@ export class Admin implements OnInit {
   description: string = '';
   price: number = 0;
 
+  editingId: string = '';
+
   // Constructor körs när komponenten skapas
   constructor(private menuService: MenuService) {}
 
@@ -84,5 +86,12 @@ export class Admin implements OnInit {
       // Uppdaterar menyn efter delete
       this.getMenuItems();
     });
+  }
+    editMenuItem(item: any) {
+
+      this.editingId = item._id;
+      this.title = item.title;
+       this.description = item.description;
+      this.price = item.price;
   }
 }

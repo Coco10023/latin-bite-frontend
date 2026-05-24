@@ -44,4 +44,15 @@ export class MenuService {
       }
     });
   }
+
+  updateMenuItem(id: string, menuItem: any) {
+
+  const token = sessionStorage.getItem('token');
+
+  return this.http.put(`${this.apiUrl}/${id}`, menuItem, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
 }
