@@ -41,10 +41,18 @@
     <h4>{{ item.title }}</h4>
     <p>{{ item.description }}</p>
     <p>{{ item.price }} kr</p>
+
     <button 
         type="button"
         (click)="deleteMenuItem(item._id)">
         Ta bort
+    </button>
+
+    <button
+        type="button"
+        (click)="editMenuItem(item)"
+    >
+        Redigera
     </button>
   </div>
 </section>
