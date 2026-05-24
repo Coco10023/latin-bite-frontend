@@ -56,27 +56,41 @@ export class Admin implements OnInit {
     });
   }
 
-  // Funktion för att lägga till ny maträtt
+  // Funktion för att lägga till eller uppdatera maträtt
   addMenuItem() {
 
-    // Skapar objekt med formulärdatan
     const newItem = {
       title: this.title,
       description: this.description,
       price: this.price
     };
 
-    // Skickar POST-request till backend
-    this.menuService.addMenuItem(newItem).subscribe(() => {
+    if (this.editingId) {
 
-      // Hämtar om menyn så nya maträtten visas direkt
+      this.menuService
+        .updateMenuItem(this.editingId, newItem)
+        .subscribe(() => {
+
+       this.getMenuItems();
+
+       this.title = '';
+       this.description = '';
+       this.price = 0;
+
+       this.editingId = '';
+      });
+
+     } else {
+
+      this.menuService.addMenuItem(newItem).subscribe(() => {
+
       this.getMenuItems();
 
-      // Tömmer formulärfälten efter att maträtten skapats
       this.title = '';
       this.description = '';
       this.price = 0;
-    });
+      });
+    }
   }
 
     deleteMenuItem(id: string) {
