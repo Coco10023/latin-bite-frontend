@@ -10,6 +10,10 @@ import { FormsModule } from '@angular/forms';
 // Importerar menu-service som pratar med API:t
 import { MenuService } from '../../services/menu.services';
 
+// Importerar Router och Auth
+import { Router } from '@angular/router';
+import { Auth } from '../../services/auth';
+
 @Component({
   selector: 'app-admin',
 
@@ -36,7 +40,11 @@ export class Admin implements OnInit {
   editingId: string = '';
 
   // Constructor körs när komponenten skapas
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    private auth: Auth,
+    private router: Router
+  ) {}
 
   // Körs automatiskt när komponenten laddas
   ngOnInit(): void {
@@ -107,5 +115,10 @@ export class Admin implements OnInit {
       this.title = item.title;
        this.description = item.description;
       this.price = item.price;
+  }
+
+    logout() {
+     this.auth.logout();
+     this.router.navigate(['/login']);
   }
 }
