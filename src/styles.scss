@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff8ef;
+  color: #2b1d14;
+}
+
+header {
+  background-color: #7a1f1f;
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  background-color: #c94b32;
+  color: white;
+  border-radius: 6px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #2b1d14;
+  color: white;
+}
