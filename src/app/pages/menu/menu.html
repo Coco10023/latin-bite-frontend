@@ -1,7 +1,9 @@
 <h2>Meny</h2>
 
-<div *ngFor="let item of menuItems">
-  <h3>{{ item.title }}</h3>
-  <p>{{ item.description }}</p>
-  <p>{{ item.price }} kr</p>
+<div class="menu-list">
+  <div class="menu-card" *ngFor="let item of menuItems">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+    <strong>{{ item.price }} kr</strong>
+  </div>
 </div>
