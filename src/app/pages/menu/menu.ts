@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../../services/menu.services';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -18,15 +19,17 @@ export class Menu implements OnInit {
   constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.menuService.getMenu().subscribe({
-      next: (data) => {
-        this.menuItems = data;
-        this.isLoading = false;
-      },
-      error: () => {
-        this.errorMessage = 'Kunde inte hämta menyn.';
-        this.isLoading = false;
-      }
-    });
+    this.menuService.getMenu()
+      .pipe(timeout(15000))
+      .subscribe({
+        next: (data) => {
+          this.menuItems = data;
+          this.isLoading = false;
+        },
+        error: () => {
+          this.errorMessage = 'Kunde inte hämta menyn. Försök igen om en stund.';
+          this.isLoading = false;
+        }
+      });
   }
 }
