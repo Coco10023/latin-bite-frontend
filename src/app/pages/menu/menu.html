@@ -1,9 +1,16 @@
-<h2>Meny</h2>
+<section class="menu-page">
+  <h2>Meny</h2>
+  <p>Här visas restaurangens meny dynamiskt från databasen.</p>
 
-<div class="menu-list">
-  <div class="menu-card" *ngFor="let item of menuItems">
-    <h3>{{ item.title }}</h3>
-    <p>{{ item.description }}</p>
-    <strong>{{ item.price }} kr</strong>
+  <p *ngIf="isLoading">Laddar meny...</p>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div class="menu-list" *ngIf="!isLoading && menuItems.length > 0">
+    <article class="menu-card" *ngFor="let item of menuItems">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+      <strong>{{ item.price }} kr</strong>
+    </article>
   </div>
-</div>
+</section>

@@ -11,13 +11,22 @@ import { MenuService } from '../../services/menu.services';
 })
 export class Menu implements OnInit {
 
-    menuItems: any[] = [];
+  menuItems: any[] = [];
+  isLoading: boolean = true;
+  errorMessage: string = '';
 
-    constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService) {}
 
-    ngOnInit(): void {
-      this.menuService.getMenu().subscribe((data) => {
+  ngOnInit(): void {
+    this.menuService.getMenu().subscribe({
+      next: (data) => {
         this.menuItems = data;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.errorMessage = 'Kunde inte hämta menyn.';
+        this.isLoading = false;
+      }
     });
   }
 }
